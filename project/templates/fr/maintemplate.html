@@ -1,0 +1,230 @@
+<!--
+##############################################
+#                                            #
+#     Copyright, this script is owned by     #
+#        MoneySmart Investment Group         #
+#                                            #
+#                                            #
+#      M   M     SSS     IIIII     GGG       #
+#      MM MM    S   S      I      G   G      #
+#      MM MM    S          I      G          #
+#      M M M     SSS       I      GGGGG      #
+#      M   M        S      I      G   G      #
+#      M   M    S   S      I      G   G      #
+#      M   M     SSS     IIIII     GGG       #
+#                                            #
+#                                            #
+#             All right reserved             #
+# https://www.moneysmartinvestmentgroup.com  #
+#                                            #
+##############################################
+--> 
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='w3.css')}} ">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nanum Gothic|Old Standard TT|Suez One|IM Fell English SC">
+    
+    {% if title %}
+        <title>{{ title }} - MSIG</title>
+    {% else %}
+        <title>MoneySmart Investment Group</title>
+    {% endif %}
+</head>
+
+<style>
+    .groupe, .prive {display:none}
+    .w3-left, .w3-right, .w3-badge {cursor:pointer}
+    .w3-badge {height:13px;width:13px;padding:0}
+    </style>
+
+<script>
+    function toggleAccordion(id) {
+        var accordion = document.getElementById(id);
+        var accordions = document.getElementsByClassName("w3-show");
+      
+        if (accordion.className.indexOf("w3-show") == -1) {
+          // Open the selected accordion
+          accordion.className += " w3-show";
+        } else {
+          // Close the selected accordion
+          accordion.className = accordion.className.replace(" w3-show", "");
+        }
+      
+        // Close the other accordions
+        for (var i = 0; i < accordions.length; i++) {
+          if (accordions[i].id != id) {
+            accordions[i].className = accordions[i].className.replace(" w3-show", "");
+          }
+        }
+      }
+      
+    </script>
+        
+    
+    
+
+<body>
+
+<div class="w3-container msig-top-blur w3-center" style="width:100%">
+    <div class="w3-bar">
+    
+        <button onclick="document.getElementById('register').style.display='block'" class="w3-bar-item w3-button msig-button-blue msig-button-blue-hover w3-round-xlarge w3-margin-right w3-margin-top w3-margin-bottom w3-mobile">Je veux ma consultation gratuite !</button>
+        
+    </div>
+</div>
+
+<div id="register" class="w3-modal w3-mobile">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom msig-background-popup-title w3-mobile">
+        <form class="w3-container w3-mobile" method="POST" action="/">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <legend>Choisis entre une rencontre de groupe ou privé</legend>
+
+                <div class="w3-container w3-mobile">
+                    <div class="w3-half w3-center">
+                        <a class="w3-large w3-block msig-url-clean msig-padding-bottom accordion accordion-panel" onclick="toggleAccordion('groupe')">Recontre de groupe</a>
+                    </div>
+                    <div class="w3-half w3-center">
+                        <a class="w3-large w3-block msig-url-clean msig-padding-bottom accordion accordion-panel" onclick="toggleAccordion('prive')">Recontre privé</a>
+                    </div>
+
+
+                        <div id="groupe" class="w3-container w3-mobile w3-hide">
+
+                            <div class="w3-container w3-padding-small w3-padding-top-48">
+                                {{ form.firstname.label() }}<span class="w3-text-red"> *</span>
+                                {{ form.firstname(class="w3-input w3-hover-light-blue w3-animate-input", type="text", style="width:35%", placeholder="Homer") }}   
+                            </div>
+
+                            <div class="w3-container w3-padding-small">
+                                {{ form.lastname.label() }}<span class="w3-text-red"> *</span>
+                                {{ form.lastname(class="w3-input w3-hover-light-blue w3-animate-input", type="text", style="width:35%", placeholder="Simpson") }} 
+                            </div>
+
+                            <div class="w3-container w3-padding-small">
+                                {{ form.email.label() }}<span class="w3-text-red"> *</span>
+                                {{ form.email(class="w3-input w3-hover-light-blue w3-animate-input", type="text", style="width:35%", placeholder="example@domain.com") }}
+                            </div>
+
+                            <div class="w3-container w3-padding-small">                                        
+                                {{ form.country.label() }}<span class="w3-text-red"> *</span>
+                                {{ form.country(class="w3-input w3-hover-light-blue w3-animate-input", type="text", style="width:35%", placeholder="Canada") }}
+                            </div>
+
+                            <div class="w3-container w3-padding-top-32 w3-padding-8 w3-center"> 
+                                <span class="w3-large">Sélectionne ce qui te conviens le mieux</span><span class="w3-text-red"> *</span><br>
+                                <span class="w3-tiny">Au moins un choix</span>
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.pge_mercredi(class="w3-check w3-col s2") }}                                            
+                                {{ form.pge_mercredi.label() }}
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.pge_samedi(class="w3-check w3-col s2") }}                                            
+                                {{ form.pge_samedi.label() }}
+                            </div>
+
+                            <div class="w3-container w3-padding-top-32 w3-padding-8 w3-center"> 
+                                <span class="w3-large"> Coche chaque secteur qui pourrait t'intéresser </span><span class="w3-text-red"> *</span><br>
+                                <span class="w3-tiny">Au moins un choix</span>
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.forex_telegram(class="w3-check w3-col s2") }}                                            
+                                {{ form.forex_telegram.label() }}
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.crypto_telegram(class="w3-check w3-col s2") }}                                            
+                                {{ form.crypto_telegram.label() }}
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.forex_copy(class="w3-check w3-col s2") }}                                            
+                                {{ form.forex_copy.label() }}
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.crypto_copy(class="w3-check w3-col s2") }}                                            
+                                {{ form.crypto_copy.label() }}
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.forex_learning(class="w3-check w3-col s2") }}                                            
+                                {{ form.forex_learning.label() }}
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.crypto_learning(class="w3-check w3-col s2") }}                                            
+                                {{ form.crypto_learning.label() }}
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.real_estate_learning(class="w3-check w3-col s2") }}                                            
+                                {{ form.real_estate_learning.label() }}
+                            </div>
+
+                            <div class="w3-container w3-padding-8 msig-border-bottom">
+                                {{ form.carriere(class="w3-check w3-col s2") }}                                            
+                                {{ form.carriere.label() }}
+                            </div>
+
+                            <div class="w3-container">
+                            {{ form.langage(value=langage, type='hidden')}}
+                            </div>
+                        
+                            <div class="w3-padding-16 w3-center">
+                            {{ form.submit(class="w3-button w3-round-large w3-light-blue w3-hover-blue") }}
+                            </div>
+                        </div>
+
+                        <!-- Calendly inline widget begin -->
+                        <div id="prive" class="w3-container w3-hide w3-mobile w3-center">
+                            <span class="w3-large">Crée ton propre rendez-vous maintenant</span>
+                            <div class="w3-large msig-center w3-padding-32">N'oublie pas que nous acceptons, pour le moment, que des candidats résidents Canadiens</div>
+                            <div class="calendly-inline-widget w3-padding-8" data-url="https://calendly.com/sisimple/wfg-eq-first-meet?hide_gdpr_banner=1" style="min-width:320px;height:850px;"></div>
+                            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                        </div>
+                        <!-- Calendly inline widget end -->
+                    <p class="w3-tiny w3-center w3-padding-32">
+                        Tes informations ne seront jamais vendus ou utilisé à d'autres fins
+                    </p>
+                </div>
+            </fieldset>
+        </form>
+
+        <div class="w3-container w3-padding-16 msig-background-popup-title">
+        <button onclick="document.getElementById('register').style.display='none'" type="button" class="w3-button w3-brown w3-hover-red">Terminé</button>
+        </div>
+    </div>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+<div class="w3-container">
+    <main>
+
+            <div class="w3-panel w3-yellow w3-display-container w3-round-large w3-padding-8">
+                <span onclick="this.parentElement.style.display='none'"
+                class="w3-button w3-display-topright w3-round-large w3-hover-red">&times;</span>
+                {{ message }}
+            </div>
+    </main>
+</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<div class="w3-padding-top-72" style="max-width:100%">
+{% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

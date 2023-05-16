@@ -1,0 +1,48 @@
+<!--
+##############################################
+#                                            #
+#     Copyright, this script is owned by     #
+#        MoneySmart Investment Group         #
+#                                            #
+#                                            #
+#      M   M     SSS     IIIII     GGG       #
+#      MM MM    S   S      I      G   G      #
+#      MM MM    S          I      G          #
+#      M M M     SSS       I      GGGGG      #
+#      M   M        S      I      G   G      #
+#      M   M    S   S      I      G   G      #
+#      M   M     SSS     IIIII     GGG       #
+#                                            #
+#                                            #
+#             All right reserved             #
+# https://www.moneysmartinvestmentgroup.com  #
+#                                            #
+##############################################
+--> 
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/msig-tech/msig-w3-css/msig.css">
+    
+    {% if title %}
+        <title>{{ title }} - MSIG</title>
+    {% else %}
+        <title>MoneySmart Investment Group</title>
+    {% endif %}
+</head>
+
+<body>
+    <div class="w3-black msig-center">
+        <a href="{{ url_for('english') }}" class="w3-button">English</a>  
+        <a href="{{ url_for('francais') }}" class="w3-button">Français</a>        
+      </div>
+
+<div class="w3-padding-top-72" style="max-width:100%">
+{% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
